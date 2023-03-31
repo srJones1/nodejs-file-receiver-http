@@ -22,10 +22,11 @@ const upload = multer({
 });
 
 app.post('/upload', upload.single('file'), function(req, res) {
-  const bearer_token = req.body.bearer_token;
   const file = req.file;
 
-  console.log("token: "+bearer_token);
+  console.log("body:", req.body);
+  console.log("headers:");
+  console.log(req.headers);
   console.log(file);
 
   res.send("File was saved in: "+file.path);
